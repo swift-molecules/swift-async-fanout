@@ -18,7 +18,7 @@ extension `Async fanout bounds concurrent work and preserves result order`.`Fano
 
         let results = await Async.Fanout(jobs: 24).mapAsync(items) { item in
 
-            try? await Task.sleep(for: .milliseconds(5 * (24 - item)))
+            for _ in 0..<(24 - item) * 10 { await Task.yield() }
             return item
         }
 
