@@ -2,11 +2,11 @@ extension Async.Fanout {
 
     public func map<Item: Sendable, Result: Sendable>(
         _ items: [Item],
-        completed: @escaping @Sendable (Swift.Int) -> Void = { _ in },
+        completed: @escaping @Sendable (Swift::Int) -> Void = { _ in },
         _ work: @escaping @Sendable (Item) -> Result
     ) async -> [Result] {
         guard !items.isEmpty else { return [] }
-        return await withTaskGroup(of: (offset: Swift.Int, value: Result).self) { group in
+        return await withTaskGroup(of: (offset: Swift::Int, value: Result).self) { group in
             var next = 0
             var finished = 0
             var results = [Result?](repeating: nil, count: items.count)

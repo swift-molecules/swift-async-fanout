@@ -55,7 +55,7 @@ extension `Async fanout bounds concurrent work and preserves result order`.`Fano
         let counts = Counts()
 
         let results = await Async.Fanout(jobs: 4).map(
-            [Swift.Int](),
+            [Swift::Int](),
             completed: { counts.record($0) },
             { $0 }
         )
@@ -73,15 +73,15 @@ extension `Async fanout bounds concurrent work and preserves result order`.`Fano
 }
 
 private final class Counts: Sendable {
-    private let storage = Mutex([Swift.Int]())
+    private let storage = Mutex([Swift::Int]())
 }
 
 extension Counts {
-    func record(_ count: Swift.Int) {
+    func record(_ count: Swift::Int) {
         storage.withLock { $0.append(count) }
     }
 
-    var observed: [Swift.Int] {
+    var observed: [Swift::Int] {
         storage.withLock { $0 }
     }
 }
