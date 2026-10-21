@@ -1,5 +1,5 @@
-import Async_Fanout
 import Async
+import Async_Fanout
 import Synchronization
 import Testing
 

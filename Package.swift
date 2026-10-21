@@ -12,16 +12,16 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        .library(name: "Async Fanout", targets: ["Async Fanout"]),
+        .library(name: "Async Fanout", targets: ["Async Fanout"])
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-atoms/swift-async.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-async.git", branch: "main")
     ],
     targets: [
         .target(
             name: "Async Fanout",
             dependencies: [
-                .product(name: "Async", package: "swift-async"),
+                .product(name: "Async", package: "swift-async")
             ],
             path: "Sources/Async Fanout"
         ),
@@ -38,14 +38,15 @@ let package = Package(
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    target.swiftSettings = (target.swiftSettings ?? []) + [
-        .strictMemorySafety(),
-        .enableUpcomingFeature("ExistentialAny"),
-        .enableUpcomingFeature("InternalImportsByDefault"),
-        .enableUpcomingFeature("MemberImportVisibility"),
-        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-        .enableUpcomingFeature("InferIsolatedConformances"),
-        .enableExperimentalFeature("Lifetimes"),
-        .treatAllWarnings(as: .error),
-    ]
+    target.swiftSettings =
+        (target.swiftSettings ?? []) + [
+            .strictMemorySafety(),
+            .enableUpcomingFeature("ExistentialAny"),
+            .enableUpcomingFeature("InternalImportsByDefault"),
+            .enableUpcomingFeature("MemberImportVisibility"),
+            .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+            .enableUpcomingFeature("InferIsolatedConformances"),
+            .enableExperimentalFeature("Lifetimes"),
+            .treatAllWarnings(as: .error),
+        ]
 }
