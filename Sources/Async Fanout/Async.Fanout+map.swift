@@ -1,3 +1,5 @@
+import _Concurrency
+
 extension Async.Fanout {
 
     public func map<Item: Sendable, Result: Sendable>(
