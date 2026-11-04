@@ -1,0 +1,4 @@
+description: "Bounded concurrent mapping with ordered results and completion progress."
+homepage: "https://swift-institute.org"
+readme:
+  family: E
