@@ -3,14 +3,23 @@ import Async_Fanout
 import Synchronization
 import Testing
 
-@Suite
-struct `Async fanout bounds concurrent work and preserves result order` {
+enum `Async.Fanout Tests` {}
+
+extension `Async.Fanout Tests` {
+    @Suite
+    struct `Async fanout bounds concurrent work and preserves result order` {
+    }
+}
+
+extension `Async.Fanout Tests`.`Async fanout bounds concurrent work and preserves result order` {
     @Suite struct `Fanout operations preserve their basic behavior` {}
+
     @Suite struct `Fanout operations preserve boundary behavior` {}
+
     @Suite struct `Fanout operations compose with their dependencies` {}
 }
 
-extension `Async fanout bounds concurrent work and preserves result order`.`Fanout operations preserve their basic behavior` {
+extension `Async.Fanout Tests`.`Async fanout bounds concurrent work and preserves result order`.`Fanout operations preserve their basic behavior` {
 
     @Test
     func `Results come back in input order however the work completes`() async {
@@ -48,7 +57,7 @@ extension `Async fanout bounds concurrent work and preserves result order`.`Fano
     }
 }
 
-extension `Async fanout bounds concurrent work and preserves result order`.`Fanout operations preserve boundary behavior` {
+extension `Async.Fanout Tests`.`Async fanout bounds concurrent work and preserves result order`.`Fanout operations preserve boundary behavior` {
 
     @Test
     func `An empty population runs nothing and reports nothing`() async {
